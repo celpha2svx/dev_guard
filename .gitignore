@@ -1,0 +1,5 @@
+/principle-engine/node_modules/
+/principle-engine/dist/
+*.js
+*.d.ts
+*.map
