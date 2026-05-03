@@ -57,12 +57,21 @@ export class PatternMatcher {
     // Only a subset maps to JS RegExp flags.
     const inlineFlagsMatch = pattern.match(/^\(\?([gimsuy]+)\)/);
     if (!inlineFlagsMatch) {
-      return new RegExp(pattern);
+      try {
+        return new RegExp(pattern);
+      } catch {
+        // Treat invalid patterns as non-matching instead of crashing the scan.
+        return /$^/;
+      }
     }
 
     const flags = inlineFlagsMatch[1];
     const source = pattern.slice(inlineFlagsMatch[0].length);
-    return new RegExp(source, flags);
+    try {
+      return new RegExp(source, flags);
+    } catch {
+      return /$^/;
+    }
   }
 
   private calculateConfidence(code: string, principle: PrincipleDefinition): number {

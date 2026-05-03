@@ -18,12 +18,12 @@ export const PRINCIPLES: PrincipleDefinition[] = [
       ],
       severity: 'critical'
     },
-    evaluation: {
-      type: 'pattern_match',
-      patterns: [
-        '(?i)(api[_\\-]?key|secret[_\\-]?key|auth[_\\-]?token)\\s*=\\s*["\'][^"\']{16,}["\']',
-        '(?i)(password|passwd|pwd)\\s*=\\s*["\'][^"\']+["\']',
-        'AKIA[0-9A-Z]{16}',
+      evaluation: {
+        type: 'pattern_match',
+        patterns: [
+          '(?i)(api[_\\-]?key|apiKey|secret[_\\-]?key|secretKey|auth[_\\-]?token|authToken)\\s*=\\s*["\'][^"\']+["\']',
+          '(?i)(password|passwd|pwd)\\s*=\\s*["\'][^"\']+["\']',
+          'AKIA[0-9A-Z]{16}',
         'sk_live_[0-9a-zA-Z]{24,}',
         'ghp_[0-9a-zA-Z]{36}'
       ],
