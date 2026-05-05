@@ -3,3 +3,8 @@
 *.js
 *.d.ts
 *.map
+node_modules
+/planning-agent/node_modules/
+/planning-agent/dist/
+/visual-canvas-core/node_modules/
+/visual-canvas-core/dist/
